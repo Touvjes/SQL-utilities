@@ -11,8 +11,8 @@ $$
 declare
   row record;
 begin
-drop table if exists public.tmp_ViewDef;
-create table public.tmp_ViewDef(table_schema varchar,table_name varchar, column_name varchar, data_type varchar);
+drop table if exists public.column_metadata;
+create table public.column_metadata(table_schema varchar,table_name varchar, column_name varchar, data_type varchar);
 for row in 
       select 
            cast(table_schema as varchar) as "table_schema"
@@ -25,7 +25,7 @@ for row in
       AND table_name =  $2 -- comment out just this line to get all tables in a given schema
 
   loop
-  insert into public.tmp_viewdef(table_schema,table_name,column_name, data_type) values (row.table_schema,row.table_name,row.column_name, row.data_type);
+  insert into public.column_metadata(table_schema,table_name,column_name, data_type) values (row.table_schema,row.table_name,row.column_name, row.data_type);
 end loop
 ;
 end;
@@ -34,5 +34,5 @@ language plpgsql
 ;
 call public.get_column_metadata(<schema>,<table>)
 ;
-select top 100 * from public.tmp_ViewDef;
+select top 100 * from public.column_metadata;
 
