@@ -13,7 +13,7 @@ declare
 begin
 drop table if exists public.column_metadata;
 create table public.column_metadata(table_schema varchar,table_name varchar, column_name varchar, data_type varchar);
-for row in 
+for row in -- second answer here notes that we have to insert one at a time: https://stackoverflow.com/questions/57326426/amazon-redshift-error-error-0a000-specified-types-or-functions-one-per-info
       select 
            cast(table_schema as varchar) as "table_schema"
           ,cast(table_name as varchar) as "table_name"
