@@ -42,4 +42,11 @@ END;
 $$
 ;
 //
-SELECT * FROM column_metrics;
+SELECT 
+meta.*,
+metric.*
+FROM column_metrics metric
+LEFT JOIN column_metadata meta on
+metric.column_name = meta.column_name
+;
+
