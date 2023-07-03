@@ -2,7 +2,7 @@
 This procedure utilizes the get_column_metadata function to generate a column metadata table from a given table.
 It then iterates over that table, row by row, generating metrics for each given column,
 and saves the results in a table named column_metrics. 
-The view can be joined back to the original column metadata table
+The table can be joined back to the original column metadata table
 displaying a full overview of a table's column's metadata, example, and metrics. 
 
 */

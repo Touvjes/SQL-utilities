@@ -1,3 +1,12 @@
+/*
+This script utilizes the table generated from the get_column_metadata script to generate a column metric table from a given table.
+It then iterates over that table, row by row, generating metrics for each given column,
+and saves the results in a table named column_metrics. 
+The table can be joined back to the original column metadata table
+displaying a full overview of a table's column's metadata, example, and metrics. 
+
+*/
+
 EXECUTE IMMEDIATE $$
 DECLARE
   schema_name := '<schema>';
