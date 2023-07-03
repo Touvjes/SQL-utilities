@@ -47,7 +47,7 @@ end;
 $$ 
 language plpgsql
 ;
-call public.get_column_metrics('validation_test', 'data_source_7_sample')
+call public.get_column_metrics('<schema>', '<table>')
 ;
 select 
 top 100 

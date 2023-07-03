@@ -32,9 +32,7 @@ BEGIN
      (SELECT 
        (COUNT('||rec.column_name||')/(COUNT(*)))*100
        FROM '||schema_name||'.'||table_name||')                     as pctpopulated,
-       
      CURRENT_TIMESTAMP                                              as timestamp
-       
      FROM '||schema_name||'.'||table_name;
      EXECUTE IMMEDIATE stmt;     
   END FOR;
