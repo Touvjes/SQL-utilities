@@ -18,7 +18,7 @@ declare
 begin
 call public.get_column_metadata($1,$2);
 drop table if exists public.column_metrics;
-create table public.column_metrics(column_name varchar, example_value varchar, ct text, ctdistinct numeric, pctpopulated real, updatedat timestamp);
+create table public.column_metrics(column_name varchar, example_value varchar, ct text, ctdistinct numeric, pctpopulated real, updated_at timestamp);
 for row in 
       select 
         column_name
