@@ -39,7 +39,7 @@ for row in
             ROUND((((COUNT('||row.column_name||')*1.00)/(COUNT(*)*1.00))*100.00),2)
             FROM '|| quote_ident(schema)||'.'|| quote_ident(tbl)||'),
         (SELECT CURRENT_TIMESTAMP)
-    from validation_test.data_source_7_sample';
+    from '|| quote_ident(schema)||'.'|| quote_ident(tbl);
   EXECUTE v_sql;
 end loop
 ;
