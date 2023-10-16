@@ -20,9 +20,12 @@ BEGIN
      'INSERT INTO column_metrics 
      SELECT top 1 
      '''|| cname ||'''                                              as column_name,  
-     (SELECT top 1 '|| rec.column_name ||'
+     (SELECT max('|| rec.column_name ||')
      FROM '||schema_name||'.'||table_name||'
-     WHERE '|| rec.column_name ||' IS NOT NULL)                     as exmaple_value,
+     WHERE '|| rec.column_name ||' IS NOT NULL)                     as max_value,
+     (SELECT min('|| rec.column_name ||')
+     FROM '||schema_name||'.'||table_name||'
+     WHERE '|| rec.column_name ||' IS NOT NULL)                     as min_value,
      (SELECT 
        COUNT('||rec.column_name||') 
        FROM '||schema_name||'.'||table_name||')                     as ct,
@@ -48,3 +51,4 @@ LEFT JOIN column_metadata meta on
 metric.column_name = meta.column_name
 ;
 
+ 
