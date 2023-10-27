@@ -12,8 +12,8 @@ DECLARE
   schema_name := '<schema>';
   table_name := '<table>';
   c1 CURSOR FOR select column_name from t1;
-BEGIN
-    create or replace temp table column_metrics(column_name varchar, example_value varchar, ct varchar, ctdistinct numeric, pctpopulated float, updated_at timestamp);
+  BEGIN
+    create or replace temp table column_metrics(column_name varchar, max_value varchar, min_value varchar, ct varchar, ctdistinct numeric, pctpopulated float, updated_at timestamp);
   FOR rec IN c1 DO
      LET cname varchar := rec.column_name;
      LET stmt := 
